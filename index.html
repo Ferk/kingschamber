@@ -9,89 +9,89 @@
 <body>
   <main class="app" aria-live="polite">
     <header>
-      <h1>The King's Chamber</h1>
+      <h1 data-i18n="app.title">The King's Chamber</h1>
       <div class="stats">
-        <button class="pill moves-pill" id="moves" type="button"><span class="move-num" id="moveNum">0</span><span class="move-label">Moves</span></button>
-        <button class="pill menu-pill" id="status" type="button" aria-label="Open menu">☰</button>
+        <button class="pill moves-pill" id="moves" type="button"><span class="move-num" id="moveNum">0</span><span class="move-label" data-i18n="moves.label">Moves</span></button>
+        <button class="pill menu-pill" id="status" type="button" aria-label="Open menu" data-i18n-aria-label="menu.open">☰</button>
       </div>
     </header>
 
     <section class="stage">
       <div class="target-wrap">
         <div class="label" id="targetTitle">Target Card 1</div>
-        <div class="board target" id="target" aria-label="Target board"></div>
-        <div class="target-tools" aria-label="Target card controls">
-          <button class="btn tool-btn" id="rotateLeft" aria-label="Rotate target card counterclockwise, adds one move"><span class="icon">↺</span> +1</button>
-          <button class="btn tool-btn" id="rotateRight" aria-label="Rotate target card clockwise, adds one move"><span class="icon">↻</span> +1</button>
-          <button class="btn tool-btn" id="flipH" aria-label="Flip target card horizontally, adds one move"><span class="icon">⇋</span> +1</button>
-          <button class="btn tool-btn" id="flipV" aria-label="Flip target card vertically, adds one move"><span class="icon">⇅</span> +1</button>
+        <div class="board target" id="target" aria-label="Target board" data-i18n-aria-label="target.board"></div>
+        <div class="target-tools" aria-label="Target card controls" data-i18n-aria-label="target.controls">
+          <button class="btn tool-btn" id="rotateLeft" aria-label="Rotate target card counterclockwise, adds one move" data-i18n-aria-label="target.rotateLeft"><span class="icon">↺</span> +1</button>
+          <button class="btn tool-btn" id="rotateRight" aria-label="Rotate target card clockwise, adds one move" data-i18n-aria-label="target.rotateRight"><span class="icon">↻</span> +1</button>
+          <button class="btn tool-btn" id="flipH" aria-label="Flip target card horizontally, adds one move" data-i18n-aria-label="target.flipH"><span class="icon">⇋</span> +1</button>
+          <button class="btn tool-btn" id="flipV" aria-label="Flip target card vertically, adds one move" data-i18n-aria-label="target.flipV"><span class="icon">⇅</span> +1</button>
         </div>
       </div>
 
       <div class="board-wrap">
-        <div class="label">Playable Board</div>
-        <div class="board" id="board" aria-label="Playable chess puzzle board"></div>
+        <div class="label" data-i18n="board.playable">Playable Board</div>
+        <div class="board" id="board" aria-label="Playable chess puzzle board" data-i18n-aria-label="board.aria"></div>
       </div>
     </section>
 
-    <nav class="controls" aria-label="Game controls">
-      <button class="btn" id="reset">Reset Board</button>
-      <button class="btn primary" id="undo">Undo</button>
+    <nav class="controls" aria-label="Game controls" data-i18n-aria-label="controls.aria">
+      <button class="btn" id="reset" data-i18n="actions.reset">Reset Board</button>
+      <button class="btn primary" id="undo" data-i18n="actions.undo">Undo</button>
     </nav>
   </main>
 
   <div class="toast" id="toast">
-    <b>Puzzle solved</b>
+    <b data-i18n="win.solved">Puzzle solved</b>
     <strong class="win-rating" id="winRating"></strong>
     <p id="winText"></p>
     <div class="toast-actions">
-      <button class="btn" id="retry">Retry</button>
-      <button class="btn primary" id="nextCard">Next Card</button>
+      <button class="btn" id="retry" data-i18n="actions.retry">Retry</button>
+      <button class="btn primary" id="nextCard" data-i18n="actions.nextCard">Next Card</button>
     </div>
   </div>
 
   <div class="toast menu-dialog" id="menuDialog">
-    <b>Menu</b>
+    <b data-i18n="menu.title">Menu</b>
     <div class="menu-actions">
-      <button class="btn primary" id="menuNew">New Game</button>
-      <button class="btn" id="shareGame">Share</button>
-      <button class="btn" id="showInstructions">Instructions</button>
-      <button class="btn" id="closeMenu">Close</button>
+      <button class="btn primary" id="menuNew" data-i18n="actions.newGame">New Game</button>
+      <button class="btn" id="shareGame" data-i18n="actions.share">Share</button>
+      <button class="btn" id="showInstructions" data-i18n="actions.instructions">Instructions</button>
+      <button class="btn" id="closeMenu" data-i18n="actions.close">Close</button>
     </div>
     <p class="menu-note" id="menuNote"></p>
   </div>
 
   <div class="toast instructions-dialog" id="instructionsDialog">
-    <b>How to Play</b>
+    <b data-i18n="instructions.title">How to Play</b>
     <div class="instructions-copy">
       <section class="rule-block">
-        <h2>Goal</h2>
-        <p>Move the pieces until the playable board exactly matches the Target Card.</p>
+        <h2 data-i18n="instructions.goalTitle">Goal</h2>
+        <p data-i18n="instructions.goalText">Move the pieces until the playable board exactly matches the Target Card.</p>
       </section>
       <section class="rule-block">
-        <h2>Turns</h2>
-        <p>Tap a piece to reveal legal empty squares, then tap a highlighted square to move. Pieces never capture.</p>
-        <p>The target tools rotate or flip the Target Card. Each target change adds one move.</p>
+        <h2 data-i18n="instructions.turnsTitle">Turns</h2>
+        <p data-i18n="instructions.turnsText">Tap a piece to reveal legal empty squares, then tap a highlighted square to move. Pieces never capture.</p>
+        <p data-i18n="instructions.toolsText">The target tools rotate or flip the Target Card. Each target change adds one move.</p>
       </section>
       <section class="rule-block">
-        <h2>Card Chain</h2>
-        <p>After solving a card, you'll get a message indicating how well you did. Try to get it perfect! ..you can either retry the card or get a new target card and starting from your previously solved board, try to target the new positions.</p>
+        <h2 data-i18n="instructions.chainTitle">Card Chain</h2>
+        <p data-i18n="instructions.chainText">After solving a card, you'll get a message indicating how well you did. Try to get it perfect! ..you can either retry the card or get a new target card and starting from your previously solved board, try to target the new positions.</p>
       </section>
-      <section class="piece-rules" aria-label="Piece movement rules">
-        <article><span class="rule-piece">♔</span><div><h2>King</h2><p>Moves one square in any direction.</p></div></article>
-        <article><span class="rule-piece">♕</span><div><h2>Queen</h2><p>Slides horizontally, vertically, or diagonally. Cannot jump over pieces.</p></div></article>
-        <article><span class="rule-piece">♖</span><div><h2>Rook</h2><p>Slides horizontally or vertically. Cannot jump over pieces.</p></div></article>
-        <article><span class="rule-piece">♗</span><div><h2>Bishop</h2><p>Moves diagonally only between dark squares. Cannot jump over pieces.</p></div></article>
-        <article><span class="rule-piece">♘</span><div><h2>Knight</h2><p>Moves in an L shape and can jump over pieces. It can never land on the center square.</p></div></article>
+      <section class="piece-rules" aria-label="Piece movement rules" data-i18n-aria-label="instructions.piecesAria">
+        <article><span class="rule-piece">♔</span><div><h2 data-i18n="piece.K">King</h2><p data-i18n="instructions.king">Moves one square in any direction.</p></div></article>
+        <article><span class="rule-piece">♕</span><div><h2 data-i18n="piece.Q">Queen</h2><p data-i18n="instructions.queen">Slides horizontally, vertically, or diagonally. Cannot jump over pieces.</p></div></article>
+        <article><span class="rule-piece">♖</span><div><h2 data-i18n="piece.R">Rook</h2><p data-i18n="instructions.rook">Slides horizontally or vertically. Cannot jump over pieces.</p></div></article>
+        <article><span class="rule-piece">♗</span><div><h2 data-i18n="piece.B">Bishop</h2><p data-i18n="instructions.bishop">Moves diagonally only between dark squares. Cannot jump over pieces.</p></div></article>
+        <article><span class="rule-piece">♘</span><div><h2 data-i18n="piece.N">Knight</h2><p data-i18n="instructions.knight">Moves in an L shape and can jump over pieces. It can never land on the center square.</p></div></article>
       </section>
     </div>
-    <button class="btn primary" id="closeInstructions">Close</button>
+    <button class="btn primary" id="closeInstructions" data-i18n="actions.close">Close</button>
   </div>
 
   <div class="toast par-dialog" id="parDialog">
-    <b>Move Guide</b>
+    <b data-i18n="par.title">Move Guide</b>
     <p id="parText"></p>
-    <button class="btn primary" id="closePar">Close</button>
+    <button class="btn primary" id="closePar" data-i18n="actions.close">Close</button>
   </div>
 
   <script src="app.js" defer></script>

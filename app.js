@@ -1,4 +1,143 @@
 const pieces={K:"♔",Q:"♕",R:"♖",B:"♗",N:"♘"};
+const dictionaries={
+  en:{
+    "app.title":"The King's Chamber",
+    "moves.label":"Moves",
+    "menu.open":"Open menu",
+    "menu.title":"Menu",
+    "target.card":"Target Card {n}",
+    "target.board":"Target board",
+    "target.controls":"Target card controls",
+    "target.rotateLeft":"Rotate target card counterclockwise, adds one move",
+    "target.rotateRight":"Rotate target card clockwise, adds one move",
+    "target.flipH":"Flip target card horizontally, adds one move",
+    "target.flipV":"Flip target card vertically, adds one move",
+    "board.playable":"Playable Board",
+    "board.aria":"Playable chess puzzle board",
+    "controls.aria":"Game controls",
+    "actions.reset":"Reset Board",
+    "actions.undo":"Undo",
+    "actions.retry":"Retry",
+    "actions.nextCard":"Next Card",
+    "actions.newGame":"New Game",
+    "actions.share":"Share",
+    "actions.instructions":"Instructions",
+    "actions.close":"Close",
+    "win.solved":"Puzzle solved",
+    "win.moves":"Matched in {n} {movesWord}.",
+    "win.moveSingular":"move",
+    "win.movePlural":"moves",
+    "rating.perfect":"PERFECT!",
+    "rating.excellent":"Excellent!",
+    "rating.great":"Great!",
+    "rating.ok":"Ok.",
+    "rating.notBad":"Not bad.",
+    "rating.better":"You can do better.",
+    "instructions.title":"How to Play",
+    "instructions.goalTitle":"Goal",
+    "instructions.goalText":"Move the pieces until the playable board exactly matches the Target Card.",
+    "instructions.turnsTitle":"Turns",
+    "instructions.turnsText":"Tap a piece to reveal legal empty squares, then tap a highlighted square to move. Pieces never capture.",
+    "instructions.toolsText":"The target tools rotate or flip the Target Card. Each target change adds one move.",
+    "instructions.chainTitle":"Card Chain",
+    "instructions.chainText":"After solving a card, you'll get a message indicating how well you did. Try to get it perfect! You can retry the card, or take the next target card and continue from your solved board.",
+    "instructions.piecesAria":"Piece movement rules",
+    "instructions.king":"Moves one square in any direction.",
+    "instructions.queen":"Slides horizontally, vertically, or diagonally. Cannot jump over pieces.",
+    "instructions.rook":"Slides horizontally or vertically. Cannot jump over pieces.",
+    "instructions.bishop":"Moves diagonally only between dark squares. Cannot jump over pieces.",
+    "instructions.knight":"Moves in an L shape and can jump over pieces. It can never land on the center square.",
+    "piece.K":"King",
+    "piece.Q":"Queen",
+    "piece.R":"Rook",
+    "piece.B":"Bishop",
+    "piece.N":"Knight",
+    "square.piece":"{piece} on square {n}",
+    "square.empty":"Empty square {n}",
+    "par.title":"Move Guide",
+    "par.text":"Current moves: {moves}. Board-only par: {boardPar}. With target tools: {anyPar}.",
+    "moves.aria":"Moves: {moves}. Board par {boardPar}. Any par {anyPar}.",
+    "share.title":"The King's Chamber",
+    "share.text":"Try this puzzle seed.",
+    "share.copied":"Link copied.",
+    "share.cancelled":"Share was cancelled."
+  },
+  es:{
+    "app.title":"La Cámara Real",
+    "moves.label":"Movs.",
+    "menu.open":"Abrir menú",
+    "menu.title":"Menú",
+    "target.card":"Carta Objetivo {n}",
+    "target.board":"Tablero objetivo",
+    "target.controls":"Controles de la carta objetivo",
+    "target.rotateLeft":"Girar la carta objetivo en sentido antihorario, suma un movimiento",
+    "target.rotateRight":"Girar la carta objetivo en sentido horario, suma un movimiento",
+    "target.flipH":"Reflejar la carta objetivo horizontalmente, suma un movimiento",
+    "target.flipV":"Reflejar la carta objetivo verticalmente, suma un movimiento",
+    "board.playable":"Tablero Jugable",
+    "board.aria":"Tablero de ajedrez jugable",
+    "controls.aria":"Controles del juego",
+    "actions.reset":"Reiniciar Tablero",
+    "actions.undo":"Deshacer",
+    "actions.retry":"Reintentar",
+    "actions.nextCard":"Siguiente Carta",
+    "actions.newGame":"Nuevo Juego",
+    "actions.share":"Compartir",
+    "actions.instructions":"Instrucciones",
+    "actions.close":"Cerrar",
+    "win.solved":"Puzzle resuelto",
+    "win.moves":"Completado en {n} {movesWord}.",
+    "win.moveSingular":"movimiento",
+    "win.movePlural":"movimientos",
+    "rating.perfect":"¡PERFECTO!",
+    "rating.excellent":"¡Excelente!",
+    "rating.great":"¡Genial!",
+    "rating.ok":"Bien.",
+    "rating.notBad":"No está mal.",
+    "rating.better":"Puedes hacerlo mejor.",
+    "instructions.title":"Cómo jugar",
+    "instructions.goalTitle":"Objetivo",
+    "instructions.goalText":"Mueve las piezas hasta que el tablero jugable coincida exactamente con la Carta Objetivo.",
+    "instructions.turnsTitle":"Turnos",
+    "instructions.turnsText":"Toca una pieza para ver sus casillas legales vacías, luego toca una casilla resaltada para mover. Las piezas nunca capturan.",
+    "instructions.toolsText":"Las herramientas de objetivo giran o reflejan la Carta Objetivo. Cada cambio de objetivo suma un movimiento.",
+    "instructions.chainTitle":"Cadena de Cartas",
+    "instructions.chainText":"Después de resolver una carta, verás un mensaje con tu resultado. Intenta lograr un perfecto. Puedes reintentar la carta o tomar la siguiente carta objetivo y continuar desde tu tablero resuelto.",
+    "instructions.piecesAria":"Reglas de movimiento de las piezas",
+    "instructions.king":"Se mueve una casilla en cualquier dirección.",
+    "instructions.queen":"Se desliza horizontal, vertical o diagonalmente. No puede saltar piezas.",
+    "instructions.rook":"Se desliza horizontal o verticalmente. No puede saltar piezas.",
+    "instructions.bishop":"Se mueve en diagonal solo entre casillas oscuras. No puede saltar piezas.",
+    "instructions.knight":"Se mueve en forma de L y puede saltar piezas. Nunca puede caer en la casilla central.",
+    "piece.K":"Rey",
+    "piece.Q":"Dama",
+    "piece.R":"Torre",
+    "piece.B":"Alfil",
+    "piece.N":"Caballo",
+    "square.piece":"{piece} en la casilla {n}",
+    "square.empty":"Casilla vacía {n}",
+    "par.title":"Guía de Movimientos",
+    "par.text":"Movimientos actuales: {moves}. Par solo tablero: {boardPar}. Con herramientas de objetivo: {anyPar}.",
+    "moves.aria":"Movimientos: {moves}. Par de tablero {boardPar}. Par con herramientas {anyPar}.",
+    "share.title":"La Cámara Real",
+    "share.text":"Prueba esta semilla de puzzle.",
+    "share.copied":"Enlace copiado.",
+    "share.cancelled":"Se canceló el compartir."
+  }
+};
+const locale=(globalThis.navigator?.languages||[globalThis.navigator?.language||"en"])
+  .map(lang=>lang&&lang.toLowerCase().split("-")[0])
+  .find(lang=>dictionaries[lang])||"en";
+function t(key,values={}){
+  const template=dictionaries[locale][key]??dictionaries.en[key]??key;
+  return template.replace(/\{(\w+)\}/g,(_,name)=>values[name]??"");
+}
+function applyTranslations(){
+  document.documentElement.lang=locale;
+  document.title=t("app.title");
+  document.querySelectorAll("[data-i18n]").forEach(el=>{ el.textContent=t(el.dataset.i18n); });
+  document.querySelectorAll("[data-i18n-aria-label]").forEach(el=>{ el.setAttribute("aria-label",t(el.dataset.i18nAriaLabel)); });
+}
 const canonical=["K","Q","R","B",null,null,"N",null,null];
 const boardEl=document.querySelector("#board"),targetEl=document.querySelector("#target");
 const movesEl=document.querySelector("#moves"),moveNum=document.querySelector("#moveNum"),statusEl=document.querySelector("#status");
@@ -157,7 +296,7 @@ function draw(el,state,interactive=false){
   state.forEach((p,i)=>{
     const b=document.createElement("button");
     b.className="square "+(dark(i)?"dark":"light");
-    b.type="button"; b.dataset.i=i; b.ariaLabel=p?`${p} on square ${i+1}`:`Empty square ${i+1}`;
+    b.type="button"; b.dataset.i=i; b.ariaLabel=p?t("square.piece",{piece:t(`piece.${p}`),n:i+1}):t("square.empty",{n:i+1});
     if(interactive&&selected===i) b.classList.add("selected");
     if(interactive&&hints.includes(i)) b.classList.add("hint");
     if(interactive&&last===i) b.classList.add("last");
@@ -174,11 +313,11 @@ function render(){
 
 function renderMeta(){
   moveNum.textContent=moves;
-  targetTitle.textContent=`Target Card ${cardNumber}`;
+  targetTitle.textContent=t("target.card",{n:cardNumber});
   updateMoveColor();
   statusEl.textContent="☰";
-  statusEl.setAttribute("aria-label","Open menu");
-  movesEl.setAttribute("aria-label",`Moves: ${moves}. Board par ${boardPar}. Any par ${anyPar}.`);
+  statusEl.setAttribute("aria-label",t("menu.open"));
+  movesEl.setAttribute("aria-label",t("moves.aria",{moves,boardPar,anyPar}));
 }
 
 function selectedPiece(){ return selected==null?"":board[selected]; }
@@ -218,17 +357,17 @@ function tap(e){
 function finish(){
   won=true;
   winRating.textContent=resultMessage();
-  winText.textContent=`Matched in ${moves} move${moves===1?"":"s"}.`;
+  winText.textContent=t("win.moves",{n:moves,movesWord:t(moves===1?"win.moveSingular":"win.movePlural")});
   setTimeout(()=>toast.classList.add("show"),120);
 }
 
 function resultMessage(){
-  if(moves<=Math.min(boardPar,anyPar)) return "PERFECT!";
-  if(moves<boardPar) return "Excellent!";
-  if(moves===boardPar) return "Great!";
-  if(moves===boardPar+1) return "Ok.";
-  if(moves===boardPar+2) return "Not bad.";
-  return "You can do better.";
+  if(moves<=Math.min(boardPar,anyPar)) return t("rating.perfect");
+  if(moves<boardPar) return t("rating.excellent");
+  if(moves===boardPar) return t("rating.great");
+  if(moves===boardPar+1) return t("rating.ok");
+  if(moves===boardPar+2) return t("rating.notBad");
+  return t("rating.better");
 }
 
 function startCard(seed,number=cardNumber){
@@ -321,18 +460,18 @@ function gameUrl(){
 async function shareGame(){
   const url=gameUrl();
   try{
-    if(navigator.share) await navigator.share({title:"The King's Chamber",text:"Try this puzzle seed.",url});
+    if(navigator.share) await navigator.share({title:t("share.title"),text:t("share.text"),url});
     else{
       await navigator.clipboard.writeText(url);
-      menuNote.textContent="Link copied.";
+      menuNote.textContent=t("share.copied");
     }
   }catch{
-    menuNote.textContent="Share was cancelled.";
+    menuNote.textContent=t("share.cancelled");
   }
 }
 
 function showParInfo(){
-  parText.textContent=`Current moves: ${moves}. Board-only par: ${boardPar}. With target tools: ${anyPar}.`;
+  parText.textContent=t("par.text",{moves,boardPar,anyPar});
   showDialog(parDialog);
 }
 
@@ -354,4 +493,5 @@ document.querySelector("#flipH").onclick=()=>changeTarget(targetTransforms[2],"f
 document.querySelector("#flipV").onclick=()=>changeTarget(targetTransforms[3],"flip-vertical");
 gameSeed=seedFromUrl()??randomSeed();
 writeSeedToUrl();
+applyTranslations();
 newPuzzle(false);
