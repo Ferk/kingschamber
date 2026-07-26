@@ -1,0 +1,19 @@
+{
+  "name": "The Royal Chamber",
+  "short_name": "Royal Chamber",
+  "description": "A compact 3x3 chess puzzle game.",
+  "start_url": "./",
+  "scope": "./",
+  "display": "standalone",
+  "orientation": "any",
+  "background_color": "#17120d",
+  "theme_color": "#17120d",
+  "icons": [
+    {
+      "src": "icon.svg",
+      "sizes": "any",
+      "type": "image/svg+xml",
+      "purpose": "any maskable"
+    }
+  ]
+}

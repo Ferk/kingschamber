@@ -1,0 +1,17 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512" role="img" aria-label="The Royal Chamber app icon">
+  <defs>
+    <linearGradient id="bg" x1="64" x2="448" y1="40" y2="472" gradientUnits="userSpaceOnUse">
+      <stop offset="0" stop-color="#302111"/>
+      <stop offset="0.55" stop-color="#17120d"/>
+      <stop offset="1" stop-color="#0a0907"/>
+    </linearGradient>
+    <radialGradient id="glow" cx="45%" cy="28%" r="58%">
+      <stop offset="0" stop-color="#f5d58a" stop-opacity="0.34"/>
+      <stop offset="1" stop-color="#f5d58a" stop-opacity="0"/>
+    </radialGradient>
+  </defs>
+  <rect width="512" height="512" rx="96" fill="url(#bg)"/>
+  <rect width="512" height="512" rx="96" fill="url(#glow)"/>
+  <rect x="30" y="30" width="452" height="452" rx="78" fill="none" stroke="#dca94d" stroke-width="18"/>
+  <text x="256" y="350" text-anchor="middle" font-family="Apple Color Emoji, Segoe UI Emoji, Noto Color Emoji, serif" font-size="306" font-weight="900" fill="#fff4d8" stroke="#070604" stroke-width="10" paint-order="stroke fill">♔</text>
+</svg>
